@@ -36,11 +36,7 @@ export function NavbarDemo() {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-200 ${
-        isScrolled
-          ? 'bg-white/70 backdrop-blur-md shadow-sm dark:bg-neutral-900/70'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-200` }
     >
       <Navbar>
         {/* Desktop Navigation */}
@@ -52,8 +48,6 @@ export function NavbarDemo() {
             <NavbarButton variant="primary">Contacto</NavbarButton>
           </div>
         </NavBody>
-
-        {/* Mobile Navigation */}
         <MobileNav>
           <MobileNavHeader>
             <NavbarLogo />
@@ -62,7 +56,6 @@ export function NavbarDemo() {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             />
           </MobileNavHeader>
-
           <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
             {navItems.map((item, idx) => (
               <a
