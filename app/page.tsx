@@ -1,4 +1,5 @@
 import Contact from '@/components/sections/Contact';
+import { FaqSection } from '@/components/sections/FAQ';
 import Features from '@/components/sections/Features';
 import Footer from '@/components/sections/Footer';
 import { HeroSection } from '@/components/sections/Hero';
@@ -12,6 +13,7 @@ export default function Home() {
       <NavbarDemo />
       <HeroSection />
       <SubHero />
+      <FaqSection />
       <Features />
       <Contact />
       <Footer />
