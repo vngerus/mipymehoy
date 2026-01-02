@@ -51,18 +51,18 @@ export function FaqSection() {
   };
 
   return (
-    <section className="bg-white dark:bg-neutral-950">
+    <section className="bg-white">
       <div className="mx-auto w-full max-w-7xl px-4 py-20 md:px-8 md:py-32">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-medium tracking-tight text-neutral-800 dark:text-neutral-50 md:text-5xl mb-4">
+          <h2 className="text-4xl font-medium tracking-tight text-neutral-900 md:text-5xl mb-4">
             Preguntas frecuentes
           </h2>
-          <p className="mx-auto max-w-lg text-base text-neutral-600 dark:text-neutral-400">
+          <p className="mx-auto max-w-lg text-base text-neutral-600">
             Resolvemos tus dudas más comunes. Si no encuentras lo que buscas, contáctanos
             directamente en{' '}
             <a
               href="mailto:contacto@mipymehoy.cl"
-              className="text-[#24bbd6] hover:underline font-medium"
+              className="text-[#24bbd6] hover:text-[#92e138] transition-colors font-medium underline decoration-transparent hover:decoration-[#92e138] underline-offset-4"
             >
               contacto@mipymehoy.cl
             </a>
@@ -74,14 +74,28 @@ export function FaqSection() {
             <div
               key={index}
               onClick={() => toggleFAQ(index)}
-              className="group mb-4 w-full cursor-pointer rounded-xl border border-neutral-200 bg-white p-5 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] transition-all duration-200 hover:border-[#24bbd6]/50 dark:border-neutral-800 dark:bg-neutral-900 dark:shadow-none"
+              className={`group mb-4 w-full cursor-pointer rounded-xl border bg-white p-5 shadow-sm transition-all duration-300 ${
+                openIndex === index
+                  ? 'border-[#24bbd6] shadow-md shadow-[#24bbd6]/10'
+                  : 'border-neutral-200 hover:border-[#24bbd6]/50'
+              }`}
             >
               <div className="flex items-start justify-between">
-                <h3 className="text-lg font-medium text-neutral-700 dark:text-neutral-200 pr-8">
+                <h3
+                  className={`text-lg font-medium pr-8 transition-colors ${
+                    openIndex === index ? 'text-[#24bbd6]' : 'text-neutral-700'
+                  }`}
+                >
                   {faq.question}
                 </h3>
 
-                <div className="relative mt-1 h-5 w-5 flex-shrink-0 text-neutral-500 group-hover:text-[#24bbd6] dark:text-neutral-400 transition-colors">
+                <div
+                  className={`relative mt-1 h-5 w-5 flex-shrink-0 transition-colors ${
+                    openIndex === index
+                      ? 'text-[#24bbd6]'
+                      : 'text-neutral-400 group-hover:text-[#24bbd6]'
+                  }`}
+                >
                   <motion.div
                     initial={false}
                     animate={{
@@ -116,10 +130,10 @@ export function FaqSection() {
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="pt-4">
+                    <div className="pt-4 border-t border-neutral-100 mt-4">
                       <TextGenerateEffect
                         words={faq.answer}
-                        className="text-base leading-relaxed text-neutral-500 dark:text-neutral-400 font-normal"
+                        className="text-base leading-relaxed text-neutral-600 font-normal"
                         duration={0.1}
                       />
                     </div>
