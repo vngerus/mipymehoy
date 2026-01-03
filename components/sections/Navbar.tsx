@@ -24,6 +24,13 @@ export function NavbarDemo() {
     },
   ];
 
+  const extraItems = [
+    { name: 'Blog', link: '/blog' },
+    { name: 'Contacto', link: '/contacto' },
+  ];
+
+  const mobileNavItems = [...navItems, ...extraItems];
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -54,12 +61,12 @@ export function NavbarDemo() {
             />
           </MobileNavHeader>
           <MobileNavMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}>
-            {navItems.map((item, idx) => (
+            {mobileNavItems.map((item, idx) => (
               <a
                 key={`mobile-link-${idx}`}
                 href={item.link}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="relative text-neutral-600 dark:text-neutral-300"
+                className="relative w-full rounded-lg px-4 py-3 text-neutral-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 active:scale-95 transition-all"
               >
                 <span className="block">{item.name}</span>
               </a>

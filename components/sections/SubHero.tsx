@@ -47,7 +47,6 @@ export function SubHero() {
               fill="none"
             />
           </svg>
-
           <div className="relative h-full w-full z-10 flex items-center justify-center">
             <div className="relative w-[60%] h-[60%] opacity-80 grayscale-[20%] hover:grayscale-0 transition-all duration-500">
               <Image
@@ -59,13 +58,12 @@ export function SubHero() {
               />
             </div>
           </div>
-
           <motion.div
             initial={{ opacity: 0, x: -50, y: -50 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="absolute left-4 top-4 md:left-[5%] md:top-[5%] z-20 cursor-pointer group"
+            className="hidden md:block absolute left-4 top-4 md:left-[5%] md:top-[5%] z-20 cursor-pointer group"
           >
             <CometCard className="w-64">
               <div className="rounded-xl bg-white/90 backdrop-blur-sm p-5 shadow-lg border border-gray-100 dark:bg-neutral-900/90 dark:border-neutral-800 transition-colors group-hover:border-[#24bbd6]/50">
@@ -84,13 +82,12 @@ export function SubHero() {
               </div>
             </CometCard>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, x: 50, y: -50 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="absolute right-4 top-4 md:right-[5%] md:top-[5%] z-20 cursor-pointer group"
+            className="hidden md:block absolute right-4 top-4 md:right-[5%] md:top-[5%] z-20 cursor-pointer group"
           >
             <CometCard className="w-64">
               <div className="rounded-xl bg-white/90 backdrop-blur-sm p-5 shadow-lg border border-gray-100 dark:bg-neutral-900/90 dark:border-neutral-800 transition-colors group-hover:border-[#92e138]/50">
@@ -107,15 +104,14 @@ export function SubHero() {
               </div>
             </CometCard>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: 'spring', stiffness: 200, delay: 0.2 }}
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
+            className="hidden md:flex md:absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 justify-center"
           >
-            <CometCard className="w-72" rotateDepth={10}>
+            <CometCard className="w-48 sm:w-56 md:w-72" rotateDepth={10}>
               <div className="rounded-2xl bg-gradient-to-br from-[#24bbd6] to-[#92e138] p-1 shadow-2xl">
                 <div className="rounded-xl bg-black/10 backdrop-blur-md p-6 text-center border border-white/20">
                   <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-md">
@@ -132,13 +128,12 @@ export function SubHero() {
               </div>
             </CometCard>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, x: -50, y: 50 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="absolute bottom-4 left-4 md:bottom-[5%] md:left-[5%] z-20 cursor-pointer group"
+            className="hidden md:block absolute bottom-4 left-4 md:bottom-[5%] md:left-[5%] z-20 cursor-pointer group"
           >
             <CometCard className="w-64">
               <div className="rounded-xl bg-white/90 backdrop-blur-sm p-5 shadow-lg border border-gray-100 dark:bg-neutral-900/90 dark:border-neutral-800 transition-colors group-hover:border-[#24bbd6]/50">
@@ -157,13 +152,12 @@ export function SubHero() {
               </div>
             </CometCard>
           </motion.div>
-
           <motion.div
             initial={{ opacity: 0, x: 50, y: 50 }}
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="absolute bottom-4 right-4 md:bottom-[5%] md:right-[5%] z-20 cursor-pointer group"
+            className="hidden md:block absolute bottom-4 right-4 md:bottom-[5%] md:right-[5%] z-20 cursor-pointer group"
           >
             <CometCard className="w-64">
               <div className="rounded-xl bg-white/90 backdrop-blur-sm p-5 shadow-lg border border-gray-100 dark:bg-neutral-900/90 dark:border-neutral-800 transition-colors group-hover:border-[#92e138]/50">
@@ -180,6 +174,84 @@ export function SubHero() {
               </div>
             </CometCard>
           </motion.div>
+        </div>
+        <div className="md:hidden mt-8 flex flex-col items-center gap-4 relative z-20">
+          <CometCard className="w-11/12 max-w-sm mb-2">
+            <div className="rounded-xl bg-gradient-to-br from-[#24bbd6] to-[#92e138] p-[2px] shadow-lg">
+              <div className="rounded-[10px] bg-white/95 dark:bg-neutral-900/95 backdrop-blur-sm p-4 text-center flex flex-col items-center">
+                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#24bbd6]/10">
+                  <Users className="h-6 w-6 text-[#1a8f5c]" />
+                </div>
+                <h3 className="text-3xl font-black text-gray-900 dark:text-white">600+</h3>
+                <p className="text-xs font-bold text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                  Pymes Felices
+                </p>
+                <div className="mt-2 inline-block rounded-full bg-gray-100 dark:bg-neutral-800 px-3 py-1 text-[10px] font-medium text-gray-600 dark:text-gray-300">
+                  7 años de experiencia
+                </div>
+              </div>
+            </div>
+          </CometCard>
+
+          <CometCard className="w-11/12 max-w-sm">
+            <div className="rounded-xl bg-white/90 backdrop-blur-sm p-4 shadow-lg border border-gray-100 dark:bg-neutral-900/90 dark:border-neutral-800 transition-colors active:scale-95">
+              <div className="flex justify-between items-start">
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-[#24bbd6]/10">
+                  <Building2 className="h-5 w-5 text-[#24bbd6]" />
+                </div>
+              </div>
+              <h3 className="mb-1 text-base font-bold text-gray-900 dark:text-white">
+                Oficina Virtual
+              </h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                Dirección comercial y tributaria para formalizar tu negocio hoy.
+              </p>
+            </div>
+          </CometCard>
+
+          <CometCard className="w-11/12 max-w-sm">
+            <div className="rounded-xl bg-white/90 backdrop-blur-sm p-4 shadow-lg border border-gray-100 dark:bg-neutral-900/90 dark:border-neutral-800 transition-colors active:scale-95">
+              <div className="flex justify-between items-start">
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-[#92e138]/10">
+                  <TrendingUp className="h-5 w-5 text-[#1a8f5c]" />
+                </div>
+              </div>
+              <h3 className="mb-1 text-base font-bold text-gray-900 dark:text-white">Marketing</h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                Estrategias SEO y RRSS para atraer clientes locales reales.
+              </p>
+            </div>
+          </CometCard>
+
+          <CometCard className="w-11/12 max-w-sm">
+            <div className="rounded-xl bg-white/90 backdrop-blur-sm p-4 shadow-lg border border-gray-100 dark:bg-neutral-900/90 dark:border-neutral-800 transition-colors active:scale-95">
+              <div className="flex justify-between items-start">
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-[#24bbd6]/10">
+                  <Calculator className="h-5 w-5 text-[#24bbd6]" />
+                </div>
+              </div>
+              <h3 className="mb-1 text-base font-bold text-gray-900 dark:text-white">
+                Contabilidad
+              </h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                Olvídate del SII. Nosotros nos encargamos de tus declaraciones.
+              </p>
+            </div>
+          </CometCard>
+
+          <CometCard className="w-11/12 max-w-sm">
+            <div className="rounded-xl bg-white/90 backdrop-blur-sm p-4 shadow-lg border border-gray-100 dark:bg-neutral-900/90 dark:border-neutral-800 transition-colors active:scale-95">
+              <div className="flex justify-between items-start">
+                <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-[#92e138]/10">
+                  <Briefcase className="h-5 w-5 text-[#1a8f5c]" />
+                </div>
+              </div>
+              <h3 className="mb-1 text-base font-bold text-gray-900 dark:text-white">Coworking</h3>
+              <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                Espacios de trabajo modernos y equipados para tu equipo.
+              </p>
+            </div>
+          </CometCard>
         </div>
       </Container>
     </div>
