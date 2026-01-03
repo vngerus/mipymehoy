@@ -3,13 +3,14 @@
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { PointerHighlight } from '@/components/ui/pointer-highlight';
+import Container from '@/components/layout/Container';
 
 export function HeroSection() {
   return (
-    <div className="relative w-full overflow-hidden bg-[#fefefe] dark:bg-neutral-950">
+    <div className="relative w-full overflow-hidden">
       <div className="absolute bottom-0 left-0 h-96 w-96 -translate-x-1/2 translate-y-1/2 rounded-full bg-[#92e138]/5 blur-3xl" />
       <div className="absolute bottom-0 right-0 h-96 w-96 translate-x-1/2 translate-y-1/2 rounded-full bg-[#24bbd6]/5 blur-3xl" />
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-12 pb-10 sm:px-6 sm:pt-16 sm:pb-12 md:px-8 md:pt-20 md:pb-16 lg:pt-28 lg:pb-20 xl:pt-32">
+      <Container className="relative z-10 pt-12 pb-10 sm:pt-16 sm:pb-12 md:pt-20 md:pb-16 lg:pt-28 lg:pb-20 xl:pt-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -17,7 +18,7 @@ export function HeroSection() {
           className="mb-5 flex w-fit items-center gap-1.5 rounded-full bg-white px-3 py-1.5 shadow-sm ring-1 ring-gray-200 dark:bg-neutral-900 dark:ring-neutral-800 sm:mb-6 sm:gap-2 sm:px-4 sm:py-2 md:mb-8"
         >
           <div className="flex shrink-0 -space-x-2">
-            {[1, 2, 3].map((i) => (
+            {[1, 2, 3].map(i => (
               <div
                 key={i}
                 className="h-5 w-5 rounded-full bg-gradient-to-br from-[#24bbd6] to-[#92e138] ring-2 ring-white dark:ring-neutral-900 sm:h-6 sm:w-6"
@@ -78,7 +79,7 @@ export function HeroSection() {
             </button>
           </motion.div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

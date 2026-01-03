@@ -35,11 +35,8 @@ export function NavbarDemo() {
   }, []);
 
   return (
-    <div
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-200` }
-    >
+    <div className={`fixed top-0 left-0 w-full z-50 transition-colors duration-200`}>
       <Navbar>
-        {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />

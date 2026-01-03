@@ -11,13 +11,13 @@ export function Contact() {
   return (
     <section className="w-full py-20">
       <Container>
-        <div className="mx-auto max-w-4xl">
-          <div className="relative rounded-3xl p-[2px] bg-gradient-to-r from-[#24bbd6] via-[#5ddc88] to-[#92e138]">
-            <div className="relative overflow-hidden rounded-[22px] bg-white dark:bg-neutral-900 shadow-2xl">
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#24bbd6]/10 blur-3xl pointer-events-none" />
-              <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-[#92e138]/10 blur-3xl pointer-events-none" />
+        <div className="relative rounded-3xl p-[2px] bg-gradient-to-r from-[#24bbd6] via-[#5ddc88] to-[#92e138]">
+          <div className="relative overflow-hidden rounded-[22px] bg-white dark:bg-neutral-900 shadow-2xl">
+            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#24bbd6]/10 blur-3xl pointer-events-none" />
+            <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-[#92e138]/10 blur-3xl pointer-events-none" />
 
-              <div className="relative z-10 p-8 md:p-12">
+            <div className="relative z-10 p-8 md:p-16">
+              <div className="mx-auto max-w-4xl">
                 <AnimatePresence mode="wait">
                   {!isFormOpen ? (
                     <motion.div
@@ -32,7 +32,7 @@ export function Contact() {
                         <Sparkles className="h-8 w-8" />
                       </div>
 
-                      <h2 className="mb-4 text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-100 md:text-4xl">
+                      <h2 className="mb-4 text-3xl font-bold tracking-tight text-neutral-800 dark:text-neutral-100 md:text-5xl">
                         Tu negocio es único, <br /> tu solución también debería serlo.
                       </h2>
 
