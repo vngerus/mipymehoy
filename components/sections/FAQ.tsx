@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Container from '@/components/layout/Container';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
@@ -51,14 +52,14 @@ export function FaqSection() {
   };
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto w-full max-w-7xl px-4 py-20 md:px-8 md:py-32">
+    <section className="w-full">
+      <Container className="py-20 md:py-32">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-medium tracking-tight text-neutral-900 md:text-5xl mb-4">
             Preguntas frecuentes
           </h2>
           <p className="mx-auto max-w-lg text-base text-neutral-600">
-            Resolvemos tus dudas más comunes. Si no encuentras lo que buscas, contáctanos
+            Resolvemos tus dudas más comunes. Si no encuentras lo que buscas, contáctanos{' '}
             directamente en{' '}
             <a
               href="mailto:contacto@mipymehoy.cl"
@@ -143,7 +144,7 @@ export function FaqSection() {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

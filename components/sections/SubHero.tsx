@@ -4,11 +4,12 @@ import { Building2, TrendingUp, Calculator, Users, Briefcase, ArrowUpRight } fro
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { CometCard } from '@/components/ui/comet-card';
+import Container from '@/components/layout/Container';
 
 export function SubHero() {
   return (
-    <div className="relative w-full overflow-hidden bg-[#fefefe] dark:bg-neutral-950">
-      <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8 md:pb-24 lg:pb-32">
+    <div className="relative w-full overflow-hidden">
+      <Container className="pb-16 md:pb-24 lg:pb-32">
         <div className="text-center mb-10">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
             Todo lo que tu Pyme necesita en un solo lugar
@@ -180,7 +181,7 @@ export function SubHero() {
             </CometCard>
           </motion.div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

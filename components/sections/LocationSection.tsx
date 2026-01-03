@@ -2,16 +2,17 @@
 
 import { motion } from 'framer-motion';
 import { MapPin, Navigation, ExternalLink } from 'lucide-react';
+import Container from '@/components/layout/Container';
 
 export function LocationSection() {
   return (
-    <section className="bg-[#fefefe] dark:bg-neutral-950 py-20 px-4 md:px-8 w-full relative overflow-hidden">
+    <section className="py-20 w-full relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute -left-[10%] top-[20%] w-[300px] h-[300px] bg-[#24bbd6]/10 rounded-full blur-[100px]" />
         <div className="absolute right-[0%] bottom-[0%] w-[300px] h-[300px] bg-[#92e138]/10 rounded-full blur-[100px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <Container className="relative z-10 w-full">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-100 tracking-tight">
             Encuéntranos
@@ -99,7 +100,7 @@ export function LocationSection() {
             </div>
           </motion.div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

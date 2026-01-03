@@ -6,6 +6,7 @@ import { Instagram, Linkedin, Facebook, MapPin, Mail, Phone, Clock } from 'lucid
 import corfoLogo from '@/public/assets/corfo.webp';
 import sercotecLogo from '@/public/assets/sercotec.webp';
 import siiLogo from '@/public/assets/sii2.webp';
+import Container from '@/components/layout/Container';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,7 +17,7 @@ export function Footer() {
       <div className="absolute inset-0 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
       <div className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#24bbd6] opacity-[0.15] blur-[120px]"></div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 md:px-8">
+      <Container className="relative z-10">
         <div className="grid gap-12 lg:grid-cols-3">
           <div className="space-y-4">
             <h3 className="text-2xl font-bold tracking-tight text-neutral-900">
@@ -144,7 +145,7 @@ export function Footer() {
             </Link>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

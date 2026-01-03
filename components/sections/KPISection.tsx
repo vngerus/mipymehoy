@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import Container from '@/components/layout/Container';
 import { useInView, useMotionValue, useSpring } from 'framer-motion';
 
 const stats = [
@@ -39,9 +40,9 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
 
 export function KPISection() {
   return (
-    <section className="relative w-full bg-white overflow-hidden py-8">
+    <section className="relative w-full overflow-hidden py-8">
       <div className="absolute inset-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
-      <div className="relative container mx-auto px-4 z-10">
+      <Container className="relative z-10">
         <div className="relative rounded-2xl border border-neutral-200 bg-white/60 shadow-lg shadow-neutral-200/40 backdrop-blur-md overflow-hidden">
           <div className="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-[#24bbd6] opacity-15 blur-[50px]"></div>
           <div className="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-[#92e138] opacity-15 blur-[50px]"></div>
@@ -72,7 +73,7 @@ export function KPISection() {
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#24bbd6]/30 to-transparent opacity-40"></div>
           <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#92e138]/30 to-transparent opacity-40"></div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
