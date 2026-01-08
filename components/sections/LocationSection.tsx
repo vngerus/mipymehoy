@@ -8,8 +8,8 @@ export function LocationSection() {
   return (
     <section className="py-20 w-full relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute -left-[10%] top-[20%] w-[300px] h-[300px] bg-[#24bbd6]/10 rounded-full blur-[100px]" />
-        <div className="absolute right-[0%] bottom-[0%] w-[300px] h-[300px] bg-[#92e138]/10 rounded-full blur-[100px]" />
+        <div className="absolute -left-[10%] top-[20%] w-75 h-75 bg-[#24bbd6]/10 rounded-full blur-[100px]" />
+        <div className="absolute right-[0%] bottom-[0%] w-75 h-75 bg-[#92e138]/10 rounded-full blur-[100px]" />
       </div>
 
       <Container className="relative z-10 w-full">
@@ -30,10 +30,10 @@ export function LocationSection() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-1 h-full"
           >
-            <div className="h-full relative group rounded-3xl p-[2px] bg-gradient-to-br from-[#24bbd6] via-[#5ddc88] to-[#92e138]">
+            <div className="h-full relative group rounded-3xl p-0.5 bg-linear-to-br from-[#24bbd6] via-[#5ddc88] to-[#92e138]">
               <div className="h-full rounded-[22px] bg-white dark:bg-neutral-900 p-6 md:p-8 flex flex-col justify-between shadow-xl">
                 <div>
-                  <div className="inline-block p-3 rounded-2xl bg-gradient-to-br from-[#24bbd6]/10 to-[#92e138]/10 mb-6">
+                  <div className="inline-block p-3 rounded-2xl bg-linear-to-br from-[#24bbd6]/10 to-[#92e138]/10 mb-6">
                     <MapPin className="w-8 h-8 text-[#1a8f5c]" />
                   </div>
 
@@ -60,7 +60,7 @@ export function LocationSection() {
                     href="https://www.google.com/maps/dir/?api=1&destination=Av.%20Guillermo%20Ulriksen%202821%2C%20La%20Serena%2C%20Chile"
                     target="_blank"
                     rel="noreferrer"
-                    className="group/btn relative flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#24bbd6] to-[#92e138] px-4 py-3 text-sm font-bold text-white shadow-lg shadow-[#24bbd6]/20 transition-all hover:shadow-[#24bbd6]/40 hover:scale-[1.02] active:scale-[0.98]"
+                    className="group/btn relative flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-[#24bbd6] to-[#92e138] px-4 py-3 text-sm font-bold text-white shadow-lg shadow-[#24bbd6]/20 transition-all hover:shadow-[#24bbd6]/40 hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <Navigation className="w-4 h-4 fill-current" />
                     <span>Cómo llegar</span>
@@ -83,7 +83,7 @@ export function LocationSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="lg:col-span-2 min-h-[300px] h-full w-full"
+            className="lg:col-span-2 min-h-75 h-full w-full"
           >
             <div className="w-full h-full overflow-hidden rounded-3xl border border-gray-100 dark:border-neutral-800 shadow-2xl relative bg-gray-100">
               <iframe

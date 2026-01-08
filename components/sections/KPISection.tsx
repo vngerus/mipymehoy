@@ -1,8 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Container from '@/components/layout/Container';
-import { useInView, useMotionValue, useSpring } from 'framer-motion';
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   { label: 'Pymes Asesoradas', value: 600, suffix: '+' },
@@ -11,67 +15,100 @@ const stats = [
   { label: 'Años de Experiencia', value: 10, suffix: '+' },
 ];
 
-function Counter({ value, suffix }: { value: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const motionValue = useMotionValue(0);
-  const springValue = useSpring(motionValue, {
-    damping: 30,
-    stiffness: 100,
-    duration: 2000,
-  });
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-
-  useEffect(() => {
-    if (isInView) {
-      motionValue.set(value);
-    }
-  }, [isInView, value, motionValue]);
-
-  useEffect(() => {
-    return springValue.on('change', latest => {
-      if (ref.current) {
-        ref.current.textContent = Math.floor(latest).toLocaleString() + suffix;
-      }
-    });
-  }, [springValue, suffix]);
-
-  return <span ref={ref} className="tabular-nums" />;
-}
-
 export function KPISection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: 'top 95%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      tl.from(cardRef.current, { y: 60, opacity: 0, duration: 1, ease: 'power3.out' });
+      tl.from('.kpi-border', { scaleX: 0, opacity: 0, duration: 1, ease: 'expo.out' }, '-=0.8');
+      tl.from(
+        '.stat-content',
+        { y: 20, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'back.out(1.2)' },
+        '-=0.6'
+      );
+
+      const numbers = gsap.utils.toArray<HTMLElement>('.stat-number');
+      numbers.forEach((element, i) => {
+        const targetValue = stats[i].value;
+        const proxy = { val: 0 };
+        gsap.to(proxy, {
+          val: targetValue,
+          duration: 2.5,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 85%' },
+          onUpdate: () => {
+            element.textContent = Math.floor(proxy.val).toLocaleString();
+          },
+        });
+      });
+      gsap.to(cardRef.current, {
+        y: -50,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section className="relative w-full overflow-hidden py-8">
-      <div className="absolute inset-0 h-full w-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
-      <Container className="relative z-10">
-        <div className="relative rounded-2xl border border-neutral-200 bg-white/60 shadow-lg shadow-neutral-200/40 backdrop-blur-md overflow-hidden">
-          <div className="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-[#24bbd6] opacity-15 blur-[50px]"></div>
-          <div className="absolute -right-10 -bottom-10 h-32 w-32 rounded-full bg-[#92e138] opacity-15 blur-[50px]"></div>
-          <div className="flex flex-col md:flex-row items-center justify-between py-6 px-4 md:px-8 relative z-10 gap-6 md:gap-0">
+    <section
+      ref={sectionRef}
+      className="relative w-full z-20 -mt-24 sm:-mt-32 lg:-mt-40 mb-16 pointer-events-none"
+    >
+      <Container>
+        <div
+          ref={cardRef}
+          className="relative pointer-events-auto rounded-[2rem] border border-white/60 bg-white/60 shadow-2xl shadow-neutral-200/20 backdrop-blur-xl overflow-hidden dark:bg-neutral-900/60 dark:border-neutral-800 dark:shadow-none"
+        >
+          <div className="absolute inset-0 h-full w-full bg-[radial-gradient(#a3a3a3_1px,transparent_1px)] bg-size:16px_16px opacity-20 pointer-events-none mix-blend-multiply dark:mix-blend-screen" />
+          <div className="absolute inset-x-0 top-0 h-px bg-white/90" />
+          <div className="kpi-border absolute inset-x-0 top-0 h-0.75 bg-linear-to-r from-transparent via-[#24bbd6] to-transparent opacity-80 origin-center" />
+          <div className="kpi-border absolute inset-x-0 bottom-0 h-0.75 bg-linear-to-r from-transparent via-[#92e138] to-transparent opacity-80 origin-center" />
+
+          {/* Grid Layout */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 items-center relative z-10">
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="relative flex-1 flex flex-col items-center justify-center text-center w-full md:w-auto"
+                className={`
+                  stat-content relative flex flex-col items-center justify-center text-center 
+                  py-10 px-4
+                  /* Bordes internos sutiles */
+                  ${index % 2 === 0 ? 'border-r border-neutral-200/30 lg:border-none' : ''} 
+                  ${index < 2 ? 'border-b border-neutral-200/30 lg:border-none' : ''}
+                `}
               >
-                <dt className="text-3xl md:text-4xl font-bold leading-none mb-1">
-                  <span className="bg-gradient-to-r from-[#24bbd6] to-[#92e138] bg-clip-text text-transparent">
-                    <Counter value={stat.value} suffix={stat.suffix} />
+                <dt className="flex items-baseline gap-0.5 text-4xl lg:text-5xl font-black leading-none mb-3 tracking-tighter">
+                  <span className="bg-linear-to-br from-[#24bbd6] to-[#92e138] bg-clip-text text-transparent drop-shadow-sm filter">
+                    <span className="stat-number">0</span>
+                    {stat.suffix}
                   </span>
                 </dt>
 
-                <dd className="text-[10px] md:text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                <dd className="text-[10px] lg:text-xs font-bold text-neutral-500 uppercase tracking-widest">
                   {stat.label}
                 </dd>
                 {index !== stats.length - 1 && (
-                  <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 h-8 w-[1px] bg-gradient-to-b from-transparent via-[#24bbd6]/30 to-transparent"></div>
-                )}
-                {index !== stats.length - 1 && (
-                  <div className="md:hidden w-12 h-[1px] bg-gradient-to-r from-transparent via-[#24bbd6]/30 to-transparent mt-3"></div>
+                  <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px bg-neutral-400/20" />
                 )}
               </div>
             ))}
           </div>
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#24bbd6]/30 to-transparent opacity-40"></div>
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#92e138]/30 to-transparent opacity-40"></div>
         </div>
       </Container>
     </section>
